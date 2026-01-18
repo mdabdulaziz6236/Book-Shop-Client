@@ -34,7 +34,7 @@ export default async function PopularBooks() {
   }
 
   // আমরা চাই হোমপেজে মাত্র ৪টি বা ৮টি বই দেখাতে, তাই slice করছি
-  const displayBooks = books.slice(0, 4); 
+  const displayBooks = books.slice(0, 8); 
 
   return (
     <div className="py-20 bg-base-200">
