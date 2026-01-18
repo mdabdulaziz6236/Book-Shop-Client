@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { FaStar, FaShoppingCart, FaHeart, FaArrowLeft, FaTruck, FaShieldAlt, FaUndo } from "react-icons/fa";
-
-// 1. ডাটা ফেচ করার ফাংশন
+import { FaStar, FaArrowLeft, FaTruck, FaShieldAlt, FaUndo } from "react-icons/fa";
+import AddToCartBtn from "@/components/AddToCartBtn"; 
 async function getBook(id) {
   try {
     const res = await fetch(`http://localhost:5000/items/${id}`, {
@@ -20,13 +19,8 @@ async function getBook(id) {
 }
 
 export default async function BookDetails({ params }) {
-  // 🔴 FIX: params এখন একটি Promise, তাই আগে await করতে হবে
   const { id } = await params; 
-
-  // এখন id ব্যবহার করে ডাটা কল করুন
   const book = await getBook(id);
-
-  // যদি বই না পাওয়া যায়
   if (!book) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4">
@@ -40,14 +34,14 @@ export default async function BookDetails({ params }) {
     <div className="min-h-screen bg-base-200 py-10 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         
-        {/* 🔙 Back Button */}
+        {/*  Back Button */}
         <div className="mb-6">
           <Link href="/items" className="btn btn-ghost hover:bg-base-300 gap-2 text-primary font-medium">
              <FaArrowLeft /> Back to All Books
           </Link>
         </div>
 
-        {/* 📦 Main Product Card */}
+        {/*  Main Product Card */}
         <div className="card lg:card-side bg-base-100 shadow-xl overflow-hidden border border-base-200">
           
           {/* Left Side: Image */}
@@ -102,17 +96,10 @@ export default async function BookDetails({ params }) {
               </p>
             </div>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button className="btn btn-secondary flex-1 text-white font-bold text-lg shadow-lg hover:shadow-green-500/30">
-                <FaShoppingCart /> Add to Cart
-              </button>
-              <button className="btn sm:w-[30%] w-full btn-outline btn-primary btn-square" title="Add to Wishlist">
-                <FaHeart className="text-[18px]" />
-              </button>
-            </div>
+            {/*  Interactive Add To Cart Button */}
+            <AddToCartBtn book={book} />
 
-            {/* Icons */}
+            {/* Extra Features (Icons) */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-base-200">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-primary/10 rounded-full text-primary">
@@ -123,6 +110,7 @@ export default async function BookDetails({ params }) {
                   <p className="opacity-60">2-3 Days</p>
                 </div>
               </div>
+              
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-secondary/10 rounded-full text-secondary">
                   <FaShieldAlt />
@@ -132,6 +120,7 @@ export default async function BookDetails({ params }) {
                   <p className="opacity-60">100% Original</p>
                 </div>
               </div>
+
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-accent/10 rounded-full text-accent">
                   <FaUndo />
