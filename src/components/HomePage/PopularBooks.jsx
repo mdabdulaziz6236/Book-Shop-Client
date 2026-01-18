@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { FaStar } from "react-icons/fa";
 
-// 1. ডাটা ফেচ করার ফাংশন
+
 async function getBooks() {
   try {
-    // আপনার ব্যাকএন্ড সার্ভার (Port 5000) থেকে ডাটা আনা হচ্ছে
-    const res = await fetch("http://localhost:5000/items", {
-      cache: "no-store", // ডাটা যেন সবসময় ফ্রেশ থাকে
+   
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/items`, {
+      cache: "no-store", 
     });
 
     if (!res.ok) {
@@ -16,15 +16,15 @@ async function getBooks() {
     return res.json();
   } catch (error) {
     console.error("Error fetching books:", error);
-    return []; // এরর হলে খালি অ্যারে রিটার্ন করবে
+    return [];
   }
 }
 
 export default async function PopularBooks() {
-  // 2. ডাটা কল করা হচ্ছে
+
   const books = await getBooks();
 
-  // 3. যদি ডাটা না থাকে বা সার্ভার অফ থাকে
+
   if (!books || books.length === 0) {
     return (
       <div className="py-20 text-center">
@@ -33,7 +33,7 @@ export default async function PopularBooks() {
     );
   }
 
-  // আমরা চাই হোমপেজে মাত্র ৪টি বা ৮টি বই দেখাতে, তাই slice করছি
+ 
   const displayBooks = books.slice(0, 8); 
 
   return (
@@ -44,11 +44,11 @@ export default async function PopularBooks() {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* 4. ডাটাবেস থেকে আসা ডাটার ওপর লুপ চালানো হচ্ছে */}
+        
           {displayBooks.map((book) => (
             <div key={book._id} className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-base-200 group">
               
-              {/* ইমেজে ক্লিক করলে ডিটেইলস পেজে যাবে */}
+          
               <figure className="px-6 pt-6 bg-base-200/50 relative overflow-hidden">
                 <Link href={`/items/${book._id}`} className="w-full flex justify-center">
                    <img 
@@ -66,7 +66,7 @@ export default async function PopularBooks() {
                   </h2>
 
                 
-                {/* রেটিং */}
+         
                 <div className="flex text-secondary gap-1 my-1">
                   {[...Array(5)].map((_, i) => (
                     <FaStar 
@@ -76,10 +76,10 @@ export default async function PopularBooks() {
                   ))}
                 </div>
                 
-                {/* প্রাইস */}
+
                 <p className="text-xl font-bold text-primary">৳{book.price}</p>
                 
-                {/* অ্যাকশন বাটন */}
+         
                 <div className="card-actions mt-3 w-full">
                   <Link href={`/items/${book._id}`} className="w-full">
                     <button className="btn btn-primary btn-sm w-full text-white">

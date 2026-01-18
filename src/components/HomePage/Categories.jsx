@@ -24,7 +24,7 @@ export default function Categories() {
                 alt={cat.name} 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent flex items-end p-6">
                 <h3 className="text-white text-xl font-bold group-hover:text-secondary transition-colors">
                   {cat.name}
                 </h3>

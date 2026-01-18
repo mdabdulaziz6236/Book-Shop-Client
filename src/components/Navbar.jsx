@@ -43,6 +43,9 @@ export default function Navbar() {
     <>
       <li><Link href="/" className={getLinkClass("/")}>Home</Link></li>
       <li><Link href="/items" className={getLinkClass("/items")}>All Books</Link></li>
+      {
+        isLoggedIn&& <li><Link href="/add-items" className={getLinkClass("/add-items")}>Add Books</Link></li>
+      }
     </>
   );
 

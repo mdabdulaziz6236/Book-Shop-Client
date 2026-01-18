@@ -3,7 +3,7 @@ import { FaStar, FaArrowLeft, FaTruck, FaShieldAlt, FaUndo } from "react-icons/f
 import AddToCartBtn from "@/components/AddToCartBtn"; 
 async function getBook(id) {
   try {
-    const res = await fetch(`http://localhost:5000/items/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/items/${id}`, {
       cache: 'no-store'
     });
     

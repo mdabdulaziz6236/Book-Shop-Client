@@ -16,7 +16,7 @@ export default function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review, idx) => (
             <div key={idx} className="card bg-base-100 p-8 shadow-md border-b-4 border-secondary relative">
-              <div className="absolute top-[-15px] left-8 bg-secondary text-white p-3 rounded-full">
+              <div className="absolute -top-3.75 left-8 bg-secondary text-white p-3 rounded-full">
                 <FaQuoteLeft />
               </div>
               <p className="italic mt-4 mb-6 text-base-content/70">"{review.text}"</p>

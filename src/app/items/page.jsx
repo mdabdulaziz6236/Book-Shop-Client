@@ -15,7 +15,7 @@ export default function AllBooks() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8; 
   useEffect(() => {
-    fetch("http://localhost:5000/items")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/items`)
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
@@ -149,7 +149,7 @@ export default function AllBooks() {
                     </figure>
 
                     {/* Content Section */}
-                    <div className="card-body items-center text-center p-4 grow"> {/* p-6 থেকে p-4 করা হয়েছে */}
+                    <div className="card-body items-center text-center p-4 grow"> 
                       
                       <Link href={`/items/${book._id}`}>
                         <h2 className="card-title text-lg font-bold text-base-content hover:text-primary transition-colors cursor-pointer line-clamp-2 min-h-[3rem]">
