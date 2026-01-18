@@ -54,13 +54,12 @@ export default async function PopularBooks() {
                    <img 
                     src={book.image} 
                     alt={book.title} 
-                    className="rounded-lg h-48 object-cover shadow-md group-hover:scale-105 transition-transform duration-300" 
+                    className="rounded-lg w-full h-40 object-cover shadow-md group-hover:scale-105 transition-transform duration-300" 
                   />
                 </Link>
               </figure>
 
               <div className="card-body items-center text-center p-6">
-                {/* টাইটেলে ক্লিক করলে ডিটেইলস পেজে যাবে */}
                 
                   <h2 className="card-title text-lg font-bold text-base-content">
                     {book.title}

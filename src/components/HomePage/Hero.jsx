@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <div className="hero min-h-[85vh] bg-base-200 relative overflow-hidden">
+    <div className="hero min-h-[80vh] bg-base-200 relative overflow-hidden">
       {/* Background Decorative Circle */}
       <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
 

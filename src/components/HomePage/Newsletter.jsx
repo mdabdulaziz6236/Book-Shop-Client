@@ -2,7 +2,7 @@ import { FaPaperPlane } from "react-icons/fa";
 
 export default function Newsletter() {
   return (
-    <div className="relative py-24 bg-cover bg-center bg-fixed" style={{backgroundImage: 'url("https://placehold.co/1200x400/047857/000?text=Background")'}}>
+    <div className="relative py-24 bg-cover bg-center bg-fixed" style={{backgroundImage: 'url("https://placehold.co/1200x400/047857/000?text=Book Shop")'}}>
       <div className="absolute inset-0 bg-primary/90"></div>
       
       <div className="relative max-w-3xl mx-auto px-6 text-center text-white">
